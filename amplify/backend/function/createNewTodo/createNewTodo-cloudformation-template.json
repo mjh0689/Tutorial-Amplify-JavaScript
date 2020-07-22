@@ -70,7 +70,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-amplifyjsapp-dev-131919-deployment",
-					"S3Key": "amplify-builds/createNewTodo-7063787a2b6c4e694a73-build.zip"
+					"S3Key": "amplify-builds/createNewTodo-49597049736835467367-build.zip"
 				}
 			}
 		},
