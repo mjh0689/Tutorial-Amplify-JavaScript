@@ -133,13 +133,7 @@
 								"logs:CreateLogGroup",
 								"logs:CreateLogStream",
 								"logs:PutLogEvents",
-								"dynamodb:GetItem",
-								"dynamodb:BatchGetItem",
 								"dynamodb:Query",
-								"dynamodb:PutItem",
-								"dynamodb:UpdateItem",
-								"dynamodb:DeleteItem",
-								"dynamodb:BatchWriteItem",
 								"appsync:GraphQL"
 							],
 							"Resource": [
@@ -159,9 +153,32 @@
 										}
 									]
 								},
-								"arn:aws:appsync:us-east-2:142196591816:apis/jbni2u6gdrcs7hfiy4l52sqbzi/*",
-								"arn:aws:dynamodb:us-east-2:142196591816:table/Todo-jbni2u6gdrcs7hfiy4l52sqbzi-dev",
-								"arn:aws:dynamodb:us-east-2:142196591816:table/User-jbni2u6gdrcs7hfiy4l52sqbzi-dev"
+								{
+									"Fn::Sub": [
+										"arn:aws:appsync:${region}:${account}:apis/jbni2u6gdrcs7hfiy4l52sqbzi/*",
+										{
+											"region": {
+												"Ref": "AWS::Region"
+											},
+											"account": {
+												"Ref": "AWS::AccountId"
+											}
+										}
+									]
+								},
+								{
+									"Fn::Sub": [
+										"arn:aws:dynamodb:${region}:${account}:table/Todo-jbni2u6gdrcs7hfiy4l52sqbzi-${env}",
+										{
+											"region": {
+												"Ref": "AWS::Region"
+											},
+											"account": {
+												"Ref": "AWS::AccountId"
+											}
+										}
+									]
+								}
 							]
 						}
 					]

@@ -55,7 +55,8 @@
 						},
 						"REGION": {
 							"Ref": "AWS::Region"
-						}
+						},
+						"APIID": "jbni2u6gdrcs7hfiy4l52sqbzi"
 					}
 				},
 				"Role": {
@@ -69,7 +70,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-amplifyjsapp-dev-131919-deployment",
-					"S3Key": "amplify-builds/createNewTodo-2f505743684346767a52-build.zip"
+					"S3Key": "amplify-builds/createNewTodo-7063787a2b6c4e694a73-build.zip"
 				}
 			}
 		},
@@ -133,13 +134,7 @@
 								"logs:CreateLogGroup",
 								"logs:CreateLogStream",
 								"logs:PutLogEvents",
-								"dynamodb:GetItem",
-								"dynamodb:BatchGetItem",
-								"dynamodb:Query",
 								"dynamodb:PutItem",
-								"dynamodb:UpdateItem",
-								"dynamodb:DeleteItem",
-								"dynamodb:BatchWriteItem",
 								"appsync:GraphQL"
 							],
 							"Resource": [
@@ -159,9 +154,32 @@
 										}
 									]
 								},
-								"arn:aws:appsync:us-east-2:142196591816:apis/jbni2u6gdrcs7hfiy4l52sqbzi/*",
-								"arn:aws:dynamodb:us-east-2:142196591816:table/Todo-jbni2u6gdrcs7hfiy4l52sqbzi-dev",
-								"arn:aws:dynamodb:us-east-2:142196591816:table/User-jbni2u6gdrcs7hfiy4l52sqbzi-dev"
+								{
+									"Fn::Sub": [
+										"arn:aws:appsync:${region}:${account}:apis/jbni2u6gdrcs7hfiy4l52sqbzi/*",
+										{
+											"region": {
+												"Ref": "AWS::Region"
+											},
+											"account": {
+												"Ref": "AWS::AccountId"
+											}
+										}
+									]
+								},
+								{
+									"Fn::Sub": [
+										"arn:aws:dynamodb:${region}:${account}:table/Todo-jbni2u6gdrcs7hfiy4l52sqbzi-${env}",
+										{
+											"region": {
+												"Ref": "AWS::Region"
+											},
+											"account": {
+												"Ref": "AWS::AccountId"
+											}
+										}
+									]
+								}
 							]
 						}
 					]
