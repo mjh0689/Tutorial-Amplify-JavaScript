@@ -6,7 +6,7 @@
     "aws-amplify": "^3.0.20",
     "aws-appsync": "^1.8.1",
     "aws-sdk": "^2.717.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cross-fetch": "^3.0.4",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.10.4"
